@@ -28,6 +28,11 @@ service CatalogService @(path: 'CatalogService') {
     }
     //instance bound action
     actions{
+        @Common.SideEffects: {
+            TargetProperties : [
+                'in/GROSS_AMOUNT'
+            ],
+        }
         action boost() returns POs;
     };
     entity POItems as projection on transaction.poitems;
